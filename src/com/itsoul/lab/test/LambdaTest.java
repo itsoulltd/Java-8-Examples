@@ -59,7 +59,7 @@ public class LambdaTest {
 	@Test
 	public void FetchALLPass() {
 		try {
-			List<Passenger> items = (List<Passenger>) service.findAll();
+			List<Passenger> items = (List<Passenger>) service.read();
 			List<String> names = items.stream().map(p -> p.getId() + ":" + p.getName()).collect(Collectors.toList());
 			names.forEach(val -> System.out.println(val));
 			Assert.assertTrue(names.size() > 0);
@@ -72,7 +72,7 @@ public class LambdaTest {
 	@Test
 	public void CreateFromPassenger() {
 		try {
-			Passenger passenger = service.findBy(new Property("name", "towhid"));
+			Passenger passenger = service.readBy(new Property("name", "towhid"));
 			if(passenger != null) {
 				Person nPerson = passenger.insertPerson(p -> {
 					Person x = new Person();

@@ -113,8 +113,8 @@ public class Person {
 		if(marger == null) {return null;}
 		
 		ORMService<Person> personService = new ORMService<>(JPAResourceLoader.entityManager(), Person.class);
-		Person personA = personService.findBy(pa);
-		Person personB = personService.findBy(pb);
+		Person personA = personService.readBy(pa);
+		Person personB = personService.readBy(pb);
 		if(personA == null || personB == null) {return null;}
 		
 		Person np = marger.marge(personA, personB);

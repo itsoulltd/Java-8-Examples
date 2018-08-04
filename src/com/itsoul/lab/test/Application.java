@@ -90,7 +90,7 @@ public class Application {
 	
 	public static void FetchALLPass() {
 		try {
-			List<Passenger> items = (List<Passenger>) passengerService.findAll();
+			List<Passenger> items = (List<Passenger>) passengerService.read();
 			List<String> names = items.stream().map(p -> p.getId() + ":" + p.getName()).collect(Collectors.toList());
 			System.out.println("Fetch ALL:");
 			names.forEach(val -> System.out.println(val));
@@ -102,7 +102,7 @@ public class Application {
 	
 	public static Boolean CreateFromPassenger(Property search) {
 		try {
-			Passenger passenger = passengerService.findBy(search);
+			Passenger passenger = passengerService.readBy(search);
 			if(passenger != null) {
 				Person nPerson = passenger.insertPerson(p -> {
 					Person x = new Person();
